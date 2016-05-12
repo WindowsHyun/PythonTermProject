@@ -1,9 +1,21 @@
 import sys
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
 
-app = QApplication(sys.argv)
-form = QLabel("Visual Studio 2015 Python GUI PyQt5 Test Program")
-form.show()
-app.exec_()
+from PyQt5.QtCore import Qt
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import QGridLayout, QLabel, QLineEdit
+from PyQt5.QtWidgets import QTextEdit, QWidget, QDialog, QApplication
+
+import GUI
+
+class MainWindow(QDialog, GUI.Ui_Dialog):
+    def __init__(self, parent=None):
+        super(MainWindow, self).__init__(parent)
+        self.setupUi(self)
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+
+    form = MainWindow()
+    form.show()
+
+    sys.exit(app.exec_())

@@ -1,0 +1,1 @@
+pyuic5 -o convert_python.py convert.ui

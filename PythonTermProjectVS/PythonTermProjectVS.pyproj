@@ -22,6 +22,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="GUI.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="PythonTermProjectVS.py" />
   </ItemGroup>
   <PropertyGroup>
