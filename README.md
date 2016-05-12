@@ -15,6 +15,7 @@
 ---------
 개발 환경
 ---------
++ Visual Studio 2015 (Python Tools)
 + Python 3.5
 + pyqt 5 (GUI)
 
