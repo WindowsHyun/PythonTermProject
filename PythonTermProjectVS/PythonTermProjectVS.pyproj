@@ -12,6 +12,8 @@
     <OutputPath>.</OutputPath>
     <Name>PythonTermProjectVS</Name>
     <RootNamespace>PythonTermProjectVS</RootNamespace>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -23,6 +25,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="GUI.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ParsingData.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="PythonTermProjectVS.py" />

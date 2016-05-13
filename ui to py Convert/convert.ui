@@ -50,16 +50,6 @@
     <attribute name="title">
      <string>지역 검색</string>
     </attribute>
-    <widget class="QListView" name="LocationList">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>50</y>
-       <width>371</width>
-       <height>491</height>
-      </rect>
-     </property>
-    </widget>
     <widget class="QPushButton" name="saveBtn">
      <property name="geometry">
       <rect>
@@ -68,6 +58,9 @@
        <width>371</width>
        <height>31</height>
       </rect>
+     </property>
+     <property name="accessibleName">
+      <string>saveBtn</string>
      </property>
      <property name="text">
       <string>저장</string>
@@ -88,6 +81,9 @@
        <height>33</height>
       </size>
      </property>
+     <property name="accessibleName">
+      <string>searchBtn</string>
+     </property>
      <property name="text">
       <string>검색</string>
      </property>
@@ -105,6 +101,52 @@
       <string/>
      </property>
     </widget>
+    <widget class="QListWidget" name="LocationList">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>371</width>
+       <height>251</height>
+      </rect>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>371</width>
+       <height>491</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+    </widget>
+    <widget class="QListWidget" name="DetailList">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>300</y>
+       <width>371</width>
+       <height>241</height>
+      </rect>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>371</width>
+       <height>491</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="tab_2">
     <attribute name="title">
@@ -113,11 +155,17 @@
     <widget class="QLabel" name="Loaction">
      <property name="geometry">
       <rect>
-       <x>30</x>
-       <y>10</y>
-       <width>91</width>
+       <x>32</x>
+       <y>9</y>
+       <width>361</width>
        <height>31</height>
       </rect>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>361</width>
+       <height>31</height>
+      </size>
      </property>
      <property name="font">
       <font>
@@ -131,20 +179,20 @@
       <bool>false</bool>
      </property>
      <property name="text">
-      <string>정왕동</string>
+      <string>내 위치가 표시 된다.</string>
      </property>
      <property name="scaledContents">
       <bool>false</bool>
      </property>
      <property name="alignment">
-      <set>Qt::AlignCenter</set>
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
      </property>
     </widget>
     <widget class="QLabel" name="getTime">
      <property name="geometry">
       <rect>
        <x>130</x>
-       <y>18</y>
+       <y>40</y>
        <width>261</width>
        <height>21</height>
       </rect>
