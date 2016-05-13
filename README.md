@@ -1,9 +1,7 @@
 # PythonTermProject [미세먼지 주의보]
 
-각 지역별 미세먼지 농도를 확인하여 검색된 위치에 "매우나쁨~좋음" 등을 확인할수 있다.
-![Image01](https://lh6.ggpht.com/ieEiNpEHiNIzyQ7XOxzgbdAUYoYHXfzcIIa5mcyfPwySryPdEgwCpmsJZYhSIu6VaKY=h900-rw)
-
-[이미지출처] https://play.google.com/store/apps/details?id=com.app.pm10
+각 지역별 오염 정보를 확인하여 검색된 위치에 "좋음~매우나쁨"까지 확인할수 있다.
+![Image01](https://github.com/WindowsHyun/PythonTermProject/blob/master/Image/exUI3.png?raw=true)
 
 ----------
 개발자
