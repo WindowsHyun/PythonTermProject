@@ -42,3 +42,11 @@ def addParsingDataList(xmlData, motherData, childData, addList):
     for index in range(signguCdSize):
         mphms = siGunGuList[index].getElementsByTagName(childData)
         addList.addItem(str(mphms[0].firstChild.data))
+
+def addParsingDataString(xmlData, motherData, childData):
+    doc = parseString(xmlData)
+    siGunGuList = doc.getElementsByTagName(motherData)
+    signguCdSize = len(siGunGuList)
+    for index in range(signguCdSize):
+        mphms = siGunGuList[index].getElementsByTagName(childData)
+        return str(mphms[0].firstChild.data)

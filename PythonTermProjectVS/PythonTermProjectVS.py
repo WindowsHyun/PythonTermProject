@@ -7,6 +7,7 @@ from ParsingData import *
 
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import *
+from PyQt5.QtGui import QPainter, QColor, QFont
 from PyQt5.QtWidgets import QGridLayout, QLabel, QLineEdit
 from PyQt5.QtWidgets import QTextEdit, QWidget, QDialog, QApplication, QMessageBox, QPushButton, QMainWindow
 
@@ -22,11 +23,10 @@ class MainWindow(QDialog, GUI.Ui_Dialog):
         sender = self.sender()
         list = sender.currentItem()
         serverurl = "http://openapi.epost.go.kr/postal/retrieveLotNumberAdressService/retrieveLotNumberAdressService/getEupMyunDongList?ServiceKey="
-        serverkey = "agRTEvpQv1bNvtoPQr3DNvE5juZ9EAws47JkmLbQnf4OYYAXw%2FAh9TULJtGxrEBzqH2767koxGlukyRTjweQcg%3D%3D"
-        servervalue = "&brtcCd=" + urlencode(self.LocationData) + "&signguCd=" + urlencode(list.text()) +  "&numOfRows=999&pageSize=999&pageNo=1&startPage=1"
-        self.DetailData = list.text()
+        servervalue = "&brtcCd=" + urlencode(self.LocationBoxData) + "&signguCd=" + urlencode(list.text()) + "&numOfRows=999&pageSize=999&pageNo=1&startPage=1"
+        self.LocationListData = list.text()
         self.DetailList.clear()
-        areaData = openAPItoXML(serverurl, serverkey, servervalue)
+        areaData = openAPItoXML(serverurl, self.serverKey, servervalue)
         addParsingDataList(areaData, "eupMyunDongList", "emdCd", self.DetailList)
 
 
@@ -34,24 +34,48 @@ class MainWindow(QDialog, GUI.Ui_Dialog):
         sender = self.sender()
         if sender.text() == "검색":
             serverurl = "http://openapi.epost.go.kr/postal/retrieveLotNumberAdressService/retrieveLotNumberAdressService/getSiGunGuList?ServiceKey="
-            serverkey = "agRTEvpQv1bNvtoPQr3DNvE5juZ9EAws47JkmLbQnf4OYYAXw%2FAh9TULJtGxrEBzqH2767koxGlukyRTjweQcg%3D%3D"
-            servervalue = "&brtcCd="+ urlencode(self.LocationBox.currentText()) +  "&numOfRows=999&pageSize=999&pageNo=1&startPage=1"
-            self.LocationData = self.LocationBox.currentText()
+            servervalue = "&brtcCd=" + urlencode(self.LocationBox.currentText()) + "&numOfRows=999&pageSize=999&pageNo=1&startPage=1"
+            self.LocationBoxData = self.LocationBox.currentText()
             self.LocationList.clear()
-            areaData = openAPItoXML(serverurl, serverkey, servervalue)
+            areaData = openAPItoXML(serverurl, self.serverKey, servervalue)
             addParsingDataList(areaData, "siGunGuList", "signguCd", self.LocationList)
 
         if sender.text() == "저장":
             if self.DetailList.currentRow() == -1:
                 QMessageBox.information(self, sender.text() , "동/읍/면 선택해주세요..!", QMessageBox.Yes)
             else:
-                QMessageBox.information(self, sender.text() , "%s %s %s 맞나요?" % (self.LocationData, self.DetailData, self.DetailList.currentItem().text()), QMessageBox.Yes)
+                self.DetailListData = self.DetailList.currentItem().text()
+                print(self.DetailListData)
+                self.Loaction.setText("%s %s %s" % (self.LocationBoxData, self.LocationListData, self.DetailListData))
+                QMessageBox.information(self, sender.text() , "위치를 저장하였습니다..!",QMessageBox.Yes)
+
+        if sender.text() == "갱신":
+            serverurl = "http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getMsrstnAcctoRltmMesureDnsty?ServiceKey="
+            servervalue = "&stationName=" + urlencode(self.DetailListData) + "&numOfRows=1&pageSize=1&pageNo=1&startPage=1&dataTerm=DAILY"
+            areaData = openAPItoXML(serverurl, self.serverKey, servervalue)
+            self.getTime.setText("측정 시간 : %s" % addParsingDataString(areaData, "item", "dataTime"))
+            self.totalLabel.setText(addParsingDataString(areaData, "item", "khaiValue"))
+            self.totalLabel.setStyleSheet('color: rgb(255, 0, 0);')
+            self.pm10Label.setText(addParsingDataString(areaData, "item", "pm10Value"))
+            self.pm10Label.setStyleSheet('color: rgb(207, 78, 78);')
+            self.o3Label.setText(addParsingDataString(areaData, "item", "o3Value"))
+            self.o3Label.setStyleSheet('color: rgb(0, 162, 232);')
+            self.No2Label.setText(addParsingDataString(areaData, "item", "no2Value"))
+            self.No2Label.setStyleSheet('color: rgb(255, 127, 39);')
+            self.CoLabel.setText(addParsingDataString(areaData, "item", "coValue"))
+            self.CoLabel.setStyleSheet('color: rgb(34, 177, 76);')
+            self.So2Label.setText(addParsingDataString(areaData, "item", "so2Value"))
+            self.So2Label.setStyleSheet('color: rgb(0, 162, 232);')
+            QMessageBox.information(self, sender.text() , "갱신을 완료하였습니다..!",QMessageBox.Yes)
+            pass
 
     def __init__(self, parent=None):
         super(MainWindow, self).__init__(parent)
         self.myLocationData = myIPLocation() # 내위치를 가져오기
-        self.LocationData = "" # 서울시 처럼 데이터를 기억하기
-        self.DetailData = "" # 읍,면,동 데이터를 기억하기
+        self.LocationBoxData = "경기" # 서울시 처럼 데이터를 기억하기
+        self.LocationListData = "시흥시" # 
+        self.DetailListData = "정왕동" # 
+        self.serverKey = "agRTEvpQv1bNvtoPQr3DNvE5juZ9EAws47JkmLbQnf4OYYAXw%2FAh9TULJtGxrEBzqH2767koxGlukyRTjweQcg%3D%3D"
         self.setupUi(self)
         self.dust_icon.setPixmap(QPixmap('./Img/dust_icon.png')) # fore_icon 관련 이미지 추가
         self.fore_icon.setPixmap(QPixmap('./Img/fore_icon.png')) # fore_icon 관련 이미지 추가
@@ -59,13 +83,14 @@ class MainWindow(QDialog, GUI.Ui_Dialog):
         self.stateImg.setPixmap(QPixmap('./Img/state_img.png')) # 상태 관련 이미지 추가
         koreaArea = ["서울", "강원", "인천", "경기", "충북", "충남",
                           "경북", "대전", "대구", "전북", "경남", "울산",
-                          "광주", "부산", "전남", "제주" ]
+                          "광주", "부산", "전남", "제주"]
         for data in koreaArea: 
             self.LocationBox.addItem(data)
 
-        self.searchBtn.clicked.connect(self.BtnClicked)
         self.LocationList.clicked.connect(self.ListClicked)
+        self.searchBtn.clicked.connect(self.BtnClicked)
         self.saveBtn.clicked.connect(self.BtnClicked)
+        self.refreshBtn.clicked.connect(self.BtnClicked)
         self.Loaction.setText(self.myLocationData)
         
 
