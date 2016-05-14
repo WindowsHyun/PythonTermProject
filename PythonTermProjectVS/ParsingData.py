@@ -3,37 +3,46 @@ import string
 import codecs
 from xml.dom.minidom import *
 
-#ÀÎÄÚµù
+#ì¸ì½”ë”©
 def urlencode(string):
     return urllib.parse.quote(string)
 
-#µğÄÚµù
+#ë””ì½”ë”©
 def urldecode(string):
     return urllib.parse.quote(string)
 
 def myIPLocation():
     opener = urllib.request.build_opener()
     opener.addheaders = [('User-agent', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36')]
-    # ¡è User-Agent¸¦ ÀÔ·ÂÇÏÁö ¾ÊÀ»°æ¿ì naver.com ¿¡¼­ Á¤»óÀûÀÎ Á¢±ÙÀÌ ¾Æ´Ñ°ÍÀ¸·Î ÆÇ´ÜÇÏ¿© Â÷´ÜÀ» ÇÑ´Ù.
+    # â†‘ User-Agentë¥¼ ì…ë ¥í•˜ì§€ ì•Šì„ê²½ìš° naver.com ì—ì„œ ì •ìƒì ì¸ ì ‘ê·¼ì´ ì•„ë‹Œê²ƒìœ¼ë¡œ íŒë‹¨í•˜ì—¬ ì°¨ë‹¨ì„ í•œë‹¤.
     data = ""
     with opener.open('http://map.naver.com') as f:
-        data = f.read(300000).decode('utf-8') # 300000bytes ¸¦ utf-8·Î º¯È¯ÇÏ¿© ÀĞ¾î¿Â´Ù.  º¯È¯ÀÌ ¾øÀ»°æ¿ì unicode·Î ¹Ş¾Æ¿Â´Ù.
+        data = f.read(300000).decode('utf-8') # 300000bytes ë¥¼ utf-8ë¡œ ë³€í™˜í•˜ì—¬ ì½ì–´ì˜¨ë‹¤.  ë³€í™˜ì´ ì—†ì„ê²½ìš° unicodeë¡œ ë°›ì•„ì˜¨ë‹¤.
     
-    p1 = data.find("<span class=\"blind\">") + 20 # ÇöÀç À§Ä¡¸¦ ³ªÅ¸³» ÁÖ´Â ±ÛÀÚÀÇ À§Ä¡¸¦ ±¸ÇÑ´Ù.
-    data = data[p1:p1 + 50] # ÇØ´ç ±ÛÀÚ À§Ä¡¿¡¼­ 50±ÛÀÚ¸¦ data¿¡ ³Ö´Â´Ù.
+    p1 = data.find("<span class=\"blind\">") + 20 # í˜„ì¬ ìœ„ì¹˜ë¥¼ ë‚˜íƒ€ë‚´ ì£¼ëŠ” ê¸€ìì˜ ìœ„ì¹˜ë¥¼ êµ¬í•œë‹¤.
+    data = data[p1:p1 + 50] # í•´ë‹¹ ê¸€ì ìœ„ì¹˜ì—ì„œ 50ê¸€ìë¥¼ dataì— ë„£ëŠ”ë‹¤.
     p2 = data.find("</span>")
-
-    return data[:p2]
+    return data[:p2].split()
 
 def openAPItoXML(server, key, value):
     opener = urllib.request.build_opener()
     opener.addheaders = [('User-agent', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36')]
-    # ¡è User-Agent¸¦ ÀÔ·ÂÇÏÁö ¾ÊÀ»°æ¿ì naver.com ¿¡¼­ Á¤»óÀûÀÎ Á¢±ÙÀÌ ¾Æ´Ñ°ÍÀ¸·Î ÆÇ´ÜÇÏ¿© Â÷´ÜÀ» ÇÑ´Ù.
+    # â†‘ User-Agentë¥¼ ì…ë ¥í•˜ì§€ ì•Šì„ê²½ìš° naver.com ì—ì„œ ì •ìƒì ì¸ ì ‘ê·¼ì´ ì•„ë‹Œê²ƒìœ¼ë¡œ íŒë‹¨í•˜ì—¬ ì°¨ë‹¨ì„ í•œë‹¤.
     data = ""
     urldata = server + key + value
     with opener.open(urldata) as f:
-        data = f.read(300000).decode('utf-8') # 300000bytes ¸¦ utf-8·Î º¯È¯ÇÏ¿© ÀĞ¾î¿Â´Ù.  º¯È¯ÀÌ ¾øÀ»°æ¿ì unicode·Î ¹Ş¾Æ¿Â´Ù.
+        data = f.read(300000).decode('utf-8') # 300000bytes ë¥¼ utf-8ë¡œ ë³€í™˜í•˜ì—¬ ì½ì–´ì˜¨ë‹¤.  ë³€í™˜ì´ ì—†ì„ê²½ìš° unicodeë¡œ ë°›ì•„ì˜¨ë‹¤.
     return data
+
+def addParsingDicList(xmlData, motherData, childData):
+    doc = parseString(xmlData)
+    siGunGuList = doc.getElementsByTagName(motherData)
+    signguCdSize = len(siGunGuList)
+    list = []
+    for index in range(signguCdSize):
+        mphms = siGunGuList[index].getElementsByTagName(childData)
+        list.append(str(mphms[0].firstChild.data))
+    return list
 
 def addParsingDataList(xmlData, motherData, childData, addList):
     doc = parseString(xmlData)
@@ -50,3 +59,13 @@ def addParsingDataString(xmlData, motherData, childData):
     for index in range(signguCdSize):
         mphms = siGunGuList[index].getElementsByTagName(childData)
         return str(mphms[0].firstChild.data)
+
+def compareListAdd(ListA, ListB, AddList, Word):
+        temp = ""
+        for i in ListA:
+            for j in ListB:
+                if j == i:
+                    AddList.addItem(Word + i)
+                    temp = i
+            if i != temp:
+                AddList.addItem(i)
