@@ -27,7 +27,7 @@
     <Compile Include="GUI.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ParsingData.py">
+    <Compile Include="FunctionUtility.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="PythonTermProjectVS.py" />
