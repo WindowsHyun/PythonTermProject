@@ -39,7 +39,7 @@ class MainWindow(QDialog, GUI.Ui_Dialog):
 
     def BtnClicked(self):
         sender = self.sender()
-        if sender.text() == "시도 검색":
+        if sender.objectName() == "searchBtn_2":    # 시/도 검색
             self.SearchData = "시도"
             self.LocationBoxData = self.LocationBox.currentText()
             self.DetailList.setGeometry(QtCore.QRect(10, 50, 371, 491))
@@ -49,7 +49,7 @@ class MainWindow(QDialog, GUI.Ui_Dialog):
             self.DetailList.clear()
             addParsingDataList(areaData, "item", "stationName", self.DetailList)
 
-        if sender.text() == "지역 검색":
+        if sender.objectName() == "searchBtn":    # 지역 검색
             self.SearchData = "지역"
             self.DetailList.clear()
             self.DetailList.setGeometry(QtCore.QRect(10, 300, 371, 241))
@@ -60,21 +60,23 @@ class MainWindow(QDialog, GUI.Ui_Dialog):
             areaData = openAPItoXML(serverurl, self.serverKey, servervalue)
             addParsingDataList(areaData, "siGunGuList", "signguCd", self.LocationList)
 
-        if sender.text() == "저장":
+        if sender.objectName() == "saveBtn":    # 저장
             if self.DetailList.currentRow() == -1:
                 QMessageBox.information(self, sender.text() , "동/읍/면 선택해주세요..!", QMessageBox.Yes)
             else:
                 if self.SearchData == "지역":
                     self.DetailListData = self.DetailList.currentItem().text().replace("*", "")
                     self.Loaction.setText("%s %s %s" % (self.LocationBoxData, self.LocationListData, self.DetailListData))
+                    self.Loaction_2.setText("%s %s %s" % (self.LocationBoxData, self.LocationListData, self.DetailListData))
                     QMessageBox.information(self, sender.text() , "위치를 저장하였습니다..!",QMessageBox.Yes)
                 else:
                     self.DetailListData = self.DetailList.currentItem().text()
                     self.Loaction.setText("%s %s" % (self.LocationBoxData, self.DetailListData))
+                    self.Loaction_2.setText("%s %s" % (self.LocationBoxData, self.DetailListData))
                     QMessageBox.information(self, sender.text() , "위치를 저장하였습니다..!",QMessageBox.Yes)
 
 
-        if sender.text() == "갱신":
+        if sender.objectName() == "refreshBtn":    # 오염정보 검색
             serverurl = "http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getMsrstnAcctoRltmMesureDnsty?ServiceKey="
             servervalue = "&stationName=" + urlencode(self.DetailListData) + "&dataTerm=month&pageNo=1&numOfRows=10&ver=1.2&"
             areaData = openAPItoXML(serverurl, self.serverKey, servervalue)
@@ -95,7 +97,7 @@ class MainWindow(QDialog, GUI.Ui_Dialog):
             self.So2Label.setStyleSheet('color: rgb(0, 162, 232);')
             QMessageBox.information(self, sender.text() , "갱신을 완료하였습니다..!",QMessageBox.Yes)
 
-        if sender.text() == "Refresh":
+        if sender.objectName() == "refreshBtn_2":    # 미세먼지 검색
             now = time.localtime()
             dmon = now.tm_mon
             dday = now.tm_mday
@@ -111,6 +113,37 @@ class MainWindow(QDialog, GUI.Ui_Dialog):
             self.informOverall.setPlainText("%s" % addParsingDataString(areaData, "item", "informOverall"))
             self.informCause.setPlainText("%s" % addParsingDataString(areaData, "item", "informCause"))
             self.informGrade.setPlainText("%s" % addParsingDataString(areaData, "item", "informGrade").replace(",", ", "))
+            QMessageBox.information(self, sender.text() , "갱신을 완료하였습니다..!",QMessageBox.Yes)
+
+        if sender.objectName() == "refreshBtn_3":    # 오염정보 NewUI 검색
+            print("새로운 NewUi")
+            serverurl = "http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getMsrstnAcctoRltmMesureDnsty?ServiceKey="
+            servervalue = "&stationName=" + urlencode(self.DetailListData) + "&dataTerm=month&pageNo=1&numOfRows=10&ver=1.2&"
+            areaData = openAPItoXML(serverurl, self.serverKey, servervalue)
+            self.getTime_2.setText("측정 시간 : %s" % addParsingDataString(areaData, "item", "dataTime"))
+            self.totalValue.setText("통합지수 : " + str(addParsingDataString(areaData, "item", "khaiValue")) + "㎍/㎥")
+            self.totalValue.setStyleSheet('color: rgb(255, 0, 0);')
+            self.PM10Label_2.setText(str(addParsingDataString(areaData, "item", "pm10Value24")) + "㎍/㎥")
+            self.PM10Label_2.setStyleSheet('color: rgb(207, 78, 78);')
+            #self.pm10_1hLabel.setText("시간당 : " + str(addParsingDataString(areaData, "item", "pm10Value")) + "㎍/㎥")
+            #self.pm10_1hLabel.setStyleSheet('color: rgb(207, 78, 78);')
+            self.o3Label_2.setText(str(addParsingDataString(areaData, "item", "o3Value")) + "ppm")
+            self.o3Label_2.setStyleSheet('color: rgb(0, 162, 232);')
+            self.No2Label_2.setText(str(addParsingDataString(areaData, "item", "no2Value")) + "ppm")
+            self.No2Label_2.setStyleSheet('color: rgb(255, 127, 39);')
+            self.CoLabel_2.setText(str(addParsingDataString(areaData, "item", "coValue")) + "ppm")
+            self.CoLabel_2.setStyleSheet('color: rgb(34, 177, 76);')
+            self.So2Label_2.setText(str(addParsingDataString(areaData, "item", "so2Value")) + "ppm")
+            self.So2Label_2.setStyleSheet('color: rgb(0, 162, 232);')
+            # 이모티콘 관련 하여 아래로.
+            self.emoIcon.setPixmap(QPixmap('./Img/emoticon/0.png')) # 통합지수 관련 이미지
+            self.emoIcon_2.setPixmap(QPixmap('./Img/emoticon/resize/1.png')) # pm10 관련 이미지
+            self.emoIcon_3.setPixmap(QPixmap('./Img/emoticon/resize/2.png')) # O3 관련 이미지
+            self.emoIcon_4.setPixmap(QPixmap('./Img/emoticon/resize/3.png')) # NO2 관련 이미지
+            self.emoIcon_5.setPixmap(QPixmap('./Img/emoticon/resize/4.png')) # CO 관련 이미지
+            self.emoIcon_6.setPixmap(QPixmap('./Img/emoticon/resize/5.png')) # SO2 관련 이미지
+
+
             QMessageBox.information(self, sender.text() , "갱신을 완료하였습니다..!",QMessageBox.Yes)
             pass
 
@@ -141,7 +174,16 @@ class MainWindow(QDialog, GUI.Ui_Dialog):
         self.saveBtn.clicked.connect(self.BtnClicked)
         self.refreshBtn.clicked.connect(self.BtnClicked)
         self.refreshBtn_2.clicked.connect(self.BtnClicked)
+        self.refreshBtn_3.clicked.connect(self.BtnClicked)
         self.Loaction.setText(self.myLocationData)
+        self.Loaction_2.setText(self.myLocationData)
+        
+        self.emoIcon.setAutoFillBackground(False)
+        self.emoIcon_2.setAutoFillBackground(False)
+        self.emoIcon_3.setAutoFillBackground(False)
+        self.emoIcon_4.setAutoFillBackground(False)
+        self.emoIcon_5.setAutoFillBackground(False)
+        self.emoIcon_6.setAutoFillBackground(False)
         
 
 if __name__ == '__main__':
