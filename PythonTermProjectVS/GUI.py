@@ -249,6 +249,9 @@ class Ui_Dialog(object):
         self.refreshBtn = QtWidgets.QPushButton(self.tab_4)
         self.refreshBtn.setGeometry(QtCore.QRect(360, 545, 31, 26))
         self.refreshBtn.setObjectName("refreshBtn")
+        self.dustState = QtWidgets.QLabel(self.tab_4)
+        self.dustState.setGeometry(QtCore.QRect(10, 545, 340, 25))
+        self.dustState.setObjectName("dustState")
         self.tabWidget.addTab(self.tab_4, "")
         self.tab_3 = QtWidgets.QWidget()
         self.tab_3.setObjectName("tab_3")
@@ -385,7 +388,7 @@ class Ui_Dialog(object):
         self.tabWidget.addTab(self.tab_3, "")
 
         self.retranslateUi(Dialog)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):
@@ -419,6 +422,7 @@ class Ui_Dialog(object):
         self.label_18.setText(_translate("Dialog", "<html><head/><body>SO2<br>이황산가스</br></body></html>"))
         self.emoIcon_6.setText(_translate("Dialog", "emoIcon"))
         self.refreshBtn.setText(_translate("Dialog", "갱신"))
+        self.dustState.setText(_translate("Dialog", "TextLabel"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), _translate("Dialog", "오염 정보"))
         self.pm10_img.setText(_translate("Dialog", "pm10_Img"))
         self.today.setText(_translate("Dialog", "오늘 예보"))

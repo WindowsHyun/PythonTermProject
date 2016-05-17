@@ -164,6 +164,8 @@ class MainWindow(QDialog, GUI.Ui_Dialog):
         self.setupUi(self)
         writeImageWidget(self.pm10_img,"/Img/", "pm10_Test", "png") # pm10 관련 이미지 추가
 
+        writeImageWidget(self.dustState,"/Img/", "state_img3", "png") # pm10 관련 이미지 추가
+        
         koreaArea = ["서울", "강원", "인천", "경기", "충북", "충남",
                           "경북", "대전", "대구", "전북", "경남", "울산",
                           "광주", "부산", "전남", "제주"]

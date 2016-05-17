@@ -50,7 +50,7 @@
     </size>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -719,6 +719,19 @@
      </property>
      <property name="text">
       <string>갱신</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="dustState">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>545</y>
+       <width>340</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>TextLabel</string>
      </property>
     </widget>
    </widget>
