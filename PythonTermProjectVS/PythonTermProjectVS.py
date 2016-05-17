@@ -77,12 +77,12 @@ class MainWindow(QDialog, GUI.Ui_Dialog):
                 if self.SearchData == "지역":
                     self.DetailListData = self.DetailList.currentItem().text().replace("*", "")
                     self.Loaction.setText("%s %s %s" % (self.LocationBoxData, self.LocationListData, self.DetailListData))
-                    self.Loaction_2.setText("%s %s %s" % (self.LocationBoxData, self.LocationListData, self.DetailListData))
+                    self.Loaction.setText("%s %s %s" % (self.LocationBoxData, self.LocationListData, self.DetailListData))
                     QMessageBox.information(self, sender.text() , "위치를 저장하였습니다..!",QMessageBox.Yes)
                 else:
                     self.DetailListData = self.DetailList.currentItem().text()
                     self.Loaction.setText("%s %s" % (self.LocationBoxData, self.DetailListData))
-                    self.Loaction_2.setText("%s %s" % (self.LocationBoxData, self.DetailListData))
+                    self.Loaction.setText("%s %s" % (self.LocationBoxData, self.DetailListData))
                     QMessageBox.information(self, sender.text() , "위치를 저장하였습니다..!",QMessageBox.Yes)
 
 
@@ -107,11 +107,11 @@ class MainWindow(QDialog, GUI.Ui_Dialog):
 
             writeLabelWidget(self.getTime, "측정 시간 : %s" % addParsingDataString(areaData, "item", "dataTime"))
             writeLabelWidget(self.totalValue, "통합지수 : " + str(self.khaiValue) + "㎍/㎥", returnRGB(self.khaiValueData))
-            writeLabelWidget(self.PM10Label, self.pm10Value24 + "㎍/㎥", returnRGB(self.pm10Value24Data))
-            writeLabelWidget(self.o3Label, self.o3Value + "ppm", returnRGB(self.o3ValueData))
-            writeLabelWidget(self.No2Label, self.no2Value + "ppm",  returnRGB(self.no2ValueData))
-            writeLabelWidget(self.CoLabel, self.coValue + "ppm", returnRGB(self.coValueData))
-            writeLabelWidget(self.So2Label, self.so2Value + "ppm", returnRGB(self.so2ValueData))
+            writeLabelWidget(self.PM10Label, str(self.pm10Value24) + "㎍/㎥", returnRGB(self.pm10Value24Data))
+            writeLabelWidget(self.o3Label, str(self.o3Value) + "ppm", returnRGB(self.o3ValueData))
+            writeLabelWidget(self.No2Label, str(self.no2Value) + "ppm",  returnRGB(self.no2ValueData))
+            writeLabelWidget(self.CoLabel, str(self.coValue) + "ppm", returnRGB(self.coValueData))
+            writeLabelWidget(self.So2Label, str(self.so2Value) + "ppm", returnRGB(self.so2ValueData))
 
             # 이모티콘 관련 하여 아래로.
             writeImageWidget(self.emoIcon,"/Img/emoticon/", self.khaiValueData, "png") # 통합 지수 관련 이미지
