@@ -121,6 +121,8 @@ class MainWindow(QDialog, GUI.Ui_Dialog):
             writeImageWidget(self.emoIcon_5,"/Img/emoticon/resize/", self.coValueData, "png") # CO
             writeImageWidget(self.emoIcon_6,"/Img/emoticon/resize/", self.so2ValueData, "png") # SO2
 
+           
+
             if sender.objectName() == "refreshBtn":
                 QMessageBox.information(self, "미세먼지 주의보" , "갱신을 완료하였습니다..!",QMessageBox.Yes)
 
@@ -166,6 +168,12 @@ class MainWindow(QDialog, GUI.Ui_Dialog):
 
         writeImageWidget(self.dustState,"/Img/", "state_img3", "png") # pm10 관련 이미지 추가
         
+        writeImageWidget(self.tableEmo1,"/Img/emoticon/resize/",0,"png")
+        writeImageWidget(self.tableEmo2,"/Img/emoticon/resize/",1,"png")
+        writeImageWidget(self.tableEmo3,"/Img/emoticon/resize/",2,"png")
+        writeImageWidget(self.tableEmo4,"/Img/emoticon/resize/",3,"png")
+        writeImageWidget(self.tableEmo5,"/Img/emoticon/resize/",4,"png")
+
         koreaArea = ["서울", "강원", "인천", "경기", "충북", "충남",
                           "경북", "대전", "대구", "전북", "경남", "울산",
                           "광주", "부산", "전남", "제주"]
