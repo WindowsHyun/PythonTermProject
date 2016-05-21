@@ -165,14 +165,20 @@ class MainWindow(QDialog, GUI.Ui_Dialog):
         self.serverKey = "agRTEvpQv1bNvtoPQr3DNvE5juZ9EAws47JkmLbQnf4OYYAXw%2FAh9TULJtGxrEBzqH2767koxGlukyRTjweQcg%3D%3D"
         self.setupUi(self)
         writeImageWidget(self.pm10_img,"/Img/", "pm10_Test", "png") # pm10 관련 이미지 추가
-
+        self.pm10_img.setScaledContents(True);
         writeImageWidget(self.dustState,"/Img/", "state_img3", "png") # pm10 관련 이미지 추가
         
+        
         writeImageWidget(self.tableEmo1,"/Img/emoticon/resize/",0,"png")
+        self.tableEmo1.setScaledContents(True);
         writeImageWidget(self.tableEmo2,"/Img/emoticon/resize/",1,"png")
+        self.tableEmo2.setScaledContents(True);
         writeImageWidget(self.tableEmo3,"/Img/emoticon/resize/",2,"png")
+        self.tableEmo3.setScaledContents(True);
         writeImageWidget(self.tableEmo4,"/Img/emoticon/resize/",3,"png")
+        self.tableEmo4.setScaledContents(True);
         writeImageWidget(self.tableEmo5,"/Img/emoticon/resize/",4,"png")
+        self.tableEmo5.setScaledContents(True);
 
         koreaArea = ["서울", "강원", "인천", "경기", "충북", "충남",
                           "경북", "대전", "대구", "전북", "경남", "울산",

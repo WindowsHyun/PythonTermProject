@@ -50,7 +50,7 @@
     </size>
    </property>
    <property name="currentIndex">
-    <number>3</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -64,6 +64,13 @@
        <width>371</width>
        <height>31</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>함초롬바탕</family>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
      </property>
      <property name="accessibleName">
       <string>saveBtn</string>
@@ -86,6 +93,13 @@
        <width>16777215</width>
        <height>33</height>
       </size>
+     </property>
+     <property name="font">
+      <font>
+       <family>함초롬바탕</family>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
      </property>
      <property name="accessibleName">
       <string>searchBtn</string>
@@ -124,6 +138,7 @@
      </property>
      <property name="font">
       <font>
+       <family>함초롬바탕</family>
        <pointsize>14</pointsize>
        <weight>75</weight>
        <bold>true</bold>
@@ -147,6 +162,7 @@
      </property>
      <property name="font">
       <font>
+       <family>함초롬바탕</family>
        <pointsize>14</pointsize>
        <weight>75</weight>
        <bold>true</bold>
@@ -167,6 +183,13 @@
        <width>16777215</width>
        <height>33</height>
       </size>
+     </property>
+     <property name="font">
+      <font>
+       <family>함초롬바탕</family>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
      </property>
      <property name="accessibleName">
       <string>searchBtn</string>
@@ -197,7 +220,7 @@
      </property>
      <property name="font">
       <font>
-       <family>Agency FB</family>
+       <family>함초롬바탕</family>
        <pointsize>11</pointsize>
        <weight>75</weight>
        <bold>true</bold>
@@ -252,7 +275,7 @@
      </property>
      <property name="font">
       <font>
-       <family>Agency FB</family>
+       <family>함초롬바탕</family>
        <pointsize>20</pointsize>
        <weight>75</weight>
        <bold>true</bold>
@@ -282,7 +305,7 @@
      </property>
      <property name="font">
       <font>
-       <family>나눔고딕</family>
+       <family>함초롬바탕</family>
        <pointsize>24</pointsize>
       </font>
      </property>
@@ -304,7 +327,7 @@
      </property>
      <property name="font">
       <font>
-       <family>나눔고딕</family>
+       <family>함초롬바탕</family>
        <pointsize>12</pointsize>
        <weight>75</weight>
        <bold>true</bold>
@@ -341,7 +364,7 @@
      </property>
      <property name="font">
       <font>
-       <family>나눔고딕</family>
+       <family>함초롬바탕</family>
        <pointsize>10</pointsize>
        <weight>75</weight>
        <bold>true</bold>
@@ -365,7 +388,7 @@
      </property>
      <property name="font">
       <font>
-       <family>나눔고딕</family>
+       <family>함초롬바탕</family>
        <pointsize>10</pointsize>
        <weight>75</weight>
        <bold>true</bold>
@@ -427,7 +450,7 @@
      </property>
      <property name="font">
       <font>
-       <family>나눔고딕</family>
+       <family>함초롬바탕</family>
        <pointsize>10</pointsize>
        <weight>75</weight>
        <bold>true</bold>
@@ -476,7 +499,7 @@
      </property>
      <property name="font">
       <font>
-       <family>나눔고딕</family>
+       <family>함초롬바탕</family>
        <pointsize>10</pointsize>
        <weight>75</weight>
        <bold>true</bold>
@@ -525,7 +548,7 @@
      </property>
      <property name="font">
       <font>
-       <family>나눔고딕</family>
+       <family>함초롬바탕</family>
        <pointsize>10</pointsize>
        <weight>75</weight>
        <bold>true</bold>
@@ -549,7 +572,7 @@
      </property>
      <property name="font">
       <font>
-       <family>나눔고딕</family>
+       <family>함초롬바탕</family>
        <pointsize>10</pointsize>
        <weight>75</weight>
        <bold>true</bold>
@@ -598,7 +621,7 @@
      </property>
      <property name="font">
       <font>
-       <family>나눔고딕</family>
+       <family>함초롬바탕</family>
        <pointsize>10</pointsize>
        <weight>75</weight>
        <bold>true</bold>
@@ -622,7 +645,7 @@
      </property>
      <property name="font">
       <font>
-       <family>나눔고딕</family>
+       <family>함초롬바탕</family>
        <pointsize>10</pointsize>
        <weight>75</weight>
        <bold>true</bold>
@@ -646,7 +669,7 @@
      </property>
      <property name="font">
       <font>
-       <family>나눔고딕</family>
+       <family>함초롬바탕</family>
        <pointsize>10</pointsize>
        <weight>75</weight>
        <bold>true</bold>
@@ -670,7 +693,7 @@
      </property>
      <property name="font">
       <font>
-       <family>나눔고딕</family>
+       <family>함초롬바탕</family>
        <pointsize>10</pointsize>
        <weight>75</weight>
        <bold>true</bold>
@@ -717,6 +740,13 @@
        <height>26</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>함초롬바탕</family>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
      <property name="text">
       <string>갱신</string>
      </property>
@@ -733,6 +763,9 @@
      <property name="text">
       <string>TextLabel</string>
      </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
     </widget>
    </widget>
    <widget class="QWidget" name="tab_3">
@@ -743,9 +776,9 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>10</y>
+       <y>0</y>
        <width>381</width>
-       <height>301</height>
+       <height>311</height>
       </rect>
      </property>
      <property name="maximumSize">
@@ -801,7 +834,7 @@
      </property>
      <property name="font">
       <font>
-       <family>나눔고딕</family>
+       <family>함초롬바탕</family>
        <pointsize>14</pointsize>
        <weight>75</weight>
        <bold>true</bold>
@@ -822,7 +855,7 @@
      </property>
      <property name="font">
       <font>
-       <family>나눔고딕</family>
+       <family>함초롬바탕</family>
        <weight>75</weight>
        <bold>true</bold>
       </font>
@@ -842,7 +875,7 @@
      </property>
      <property name="font">
       <font>
-       <family>나눔고딕</family>
+       <family>함초롬바탕</family>
        <pointsize>10</pointsize>
        <weight>75</weight>
        <bold>true</bold>
@@ -876,7 +909,7 @@
      </property>
      <property name="font">
       <font>
-       <family>나눔고딕</family>
+       <family>함초롬바탕</family>
        <pointsize>10</pointsize>
        <weight>75</weight>
        <bold>true</bold>
@@ -910,7 +943,7 @@
      </property>
      <property name="font">
       <font>
-       <family>나눔고딕</family>
+       <family>함초롬바탕</family>
        <pointsize>10</pointsize>
        <weight>75</weight>
        <bold>true</bold>
@@ -940,7 +973,7 @@
      </property>
      <property name="font">
       <font>
-       <family>나눔고딕</family>
+       <family>함초롬바탕</family>
        <weight>75</weight>
        <bold>true</bold>
       </font>
@@ -993,7 +1026,7 @@
      </property>
      <property name="font">
       <font>
-       <family>나눔고딕</family>
+       <family>함초롬바탕</family>
        <weight>75</weight>
        <bold>true</bold>
       </font>
@@ -1030,10 +1063,17 @@
      <property name="geometry">
       <rect>
        <x>331</x>
-       <y>330</y>
+       <y>329</y>
        <width>51</width>
-       <height>21</height>
+       <height>23</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>함초롬바탕</family>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
      </property>
      <property name="text">
       <string>갱신</string>
@@ -1059,7 +1099,7 @@
      </property>
      <property name="font">
       <font>
-       <family>나눔고딕</family>
+       <family>함초롬바탕</family>
        <weight>75</weight>
        <bold>true</bold>
       </font>
@@ -1262,8 +1302,15 @@
        <height>30</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>함초롬바탕</family>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
      <property name="text">
-      <string>통합지수        0 ~ 50       50 ~ 100    101 ~ 150   151 ~ 250      251~</string>
+      <string>통합지수         0 ~ 50      50 ~ 100   101 ~ 150  151 ~ 250      251~</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_2">
@@ -1275,8 +1322,15 @@
        <height>30</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>함초롬바탕</family>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
      <property name="text">
-      <string>미세먼지        0 ~ 30       31 ~ 80      81 ~ 110    111 ~ 150      151~</string>
+      <string>미세먼지         0 ~ 30       31 ~ 80     81 ~ 110  111 ~ 150      151~</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_5">
@@ -1288,8 +1342,15 @@
        <height>30</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>함초롬바탕</family>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
      <property name="text">
-      <string>오존              0 ~ 0.03   0.03 ~ 0.09 0.09 ~ 0.11 0.11 ~ 0.15     0.15~</string>
+      <string>오존             0 ~ 0.03   0.03 ~ 0.09 0.09 ~ 0.11 0.11 ~ 0.15     0.15~</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_6">
@@ -1301,8 +1362,15 @@
        <height>30</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>함초롬바탕</family>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
      <property name="text">
-      <string>이산화질소     0 ~ 0.03   0.03 ~ 0.06  0.06 ~ 0.1   0.1 ~ 0.2       0.2~</string>
+      <string>이산화질소     0 ~ 0.03  0.03 ~ 0.06 0.06 ~ 0.1   0.1 ~ 0.2       0.2~</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_8">
@@ -1314,8 +1382,15 @@
        <height>30</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>함초롬바탕</family>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
      <property name="text">
-      <string>일산화탄소     0 ~ 2           2 ~ 9         9 ~ 11       11 ~ 15       15~</string>
+      <string>일산화탄소     0 ~ 2           2 ~ 9        9 ~ 11       11 ~ 15       15~</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_9">
@@ -1327,8 +1402,15 @@
        <height>30</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>함초롬바탕</family>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
      <property name="text">
-      <string>아황산가스    0 ~ 0.02    0.02 ~ 0.05  0.05~ 0.11 0.11 ~ 0.15     0.15~</string>
+      <string>아황산가스    0 ~ 0.02   0.02 ~ 0.05 0.05~ 0.11 0.11 ~ 0.15     0.15~</string>
      </property>
     </widget>
     <widget class="QLabel" name="tableEmo1">
@@ -1336,7 +1418,7 @@
       <rect>
        <x>73</x>
        <y>0</y>
-       <width>60</width>
+       <width>68</width>
        <height>60</height>
       </rect>
      </property>
@@ -1351,6 +1433,9 @@
      </property>
      <property name="text">
       <string>TextLabel</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
     <widget class="QLabel" name="tableEmo2">
@@ -1371,6 +1456,9 @@
      <property name="text">
       <string>TextLabel</string>
      </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
     </widget>
     <widget class="QLabel" name="tableEmo3">
      <property name="geometry">
@@ -1389,6 +1477,9 @@
      </property>
      <property name="text">
       <string>TextLabel</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
     <widget class="QLabel" name="tableEmo4">
@@ -1409,6 +1500,9 @@
      <property name="text">
       <string>TextLabel</string>
      </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
     </widget>
     <widget class="QLabel" name="tableEmo5">
      <property name="geometry">
@@ -1428,6 +1522,9 @@
      <property name="text">
       <string>TextLabel</string>
      </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
     </widget>
     <widget class="QLabel" name="label_10">
      <property name="geometry">
@@ -1437,6 +1534,13 @@
        <width>391</width>
        <height>201</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>함초롬바탕</family>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
      </property>
      <property name="lineWidth">
       <number>0</number>
