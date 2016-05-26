@@ -50,7 +50,7 @@
     </size>
    </property>
    <property name="currentIndex">
-    <number>4</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -849,7 +849,7 @@
       <rect>
        <x>95</x>
        <y>335</y>
-       <width>121</width>
+       <width>131</width>
        <height>16</height>
       </rect>
      </property>
@@ -1410,7 +1410,7 @@
       </font>
      </property>
      <property name="text">
-      <string>아황산가스    0 ~ 0.02   0.02 ~ 0.05 0.05~ 0.11 0.11 ~ 0.15     0.15~</string>
+      <string>아황산가스    0 ~ 0.02   0.02 ~ 0.05 0.05~ 0.110.11 ~ 0.15     0.15~</string>
      </property>
     </widget>
     <widget class="QLabel" name="tableEmo1">
@@ -1614,6 +1614,13 @@
        <bold>true</bold>
       </font>
      </property>
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'함초롬바탕'; font-size:10pt; font-weight:600; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;미세먼지 정보 알림 서비스..!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
     </widget>
     <widget class="QPushButton" name="sendBtn">
      <property name="geometry">
@@ -1637,8 +1644,16 @@
        <height>31</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>함초롬바탕</family>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
     </widget>
-    <widget class="QCheckBox" name="checkBox">
+    <widget class="QCheckBox" name="infoChkBox">
      <property name="geometry">
       <rect>
        <x>80</x>
@@ -1658,8 +1673,11 @@
      <property name="text">
       <string> 오 염 정 보</string>
      </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
     </widget>
-    <widget class="QCheckBox" name="checkBox_2">
+    <widget class="QCheckBox" name="DustChkBox">
      <property name="geometry">
       <rect>
        <x>80</x>
@@ -1686,7 +1704,7 @@
       <string> 미 세 먼 지 정 보</string>
      </property>
     </widget>
-    <widget class="QCheckBox" name="checkBox_3">
+    <widget class="QCheckBox" name="PM10ChkBox">
      <property name="geometry">
       <rect>
        <x>80</x>

@@ -17,20 +17,14 @@ def Base64_Decode(b):
 
 def sendMail(ReviceMail, Subject, Content):
     s = smtplib.SMTP("smtp.gmail.com",587) #SMTP 서버 설정
-    #s.ehlo()
     s.starttls() #STARTTLS 시작
-    #s.ehlo()
     s.login( Base64_Decode("YW5reW9uZzk5QGdtYWlsLmNvbQ=="),Base64_Decode("YW5reW9uZzk="))
-    
-    contents = '프로그램 뻗었다!!'
-
+    contents = Content
     msg = MIMEText(contents, _charset='euc-kr')
-    msg['Subject'] = '[ALERT]'
-    msg['From'] = "ankyong99@gmail.com"
-    msg['To'] = "kwon616@gmail.com"
-
-    s.sendmail("ankyong99@gmail.com" , "kwon616@gmail.com", msg.as_string())
-    pass
+    msg['Subject'] = Subject
+    msg['From'] = Base64_Decode("YW5reW9uZzk5QGdtYWlsLmNvbQ==")
+    msg['To'] = ReviceMail
+    s.sendmail( Base64_Decode("YW5reW9uZzk5QGdtYWlsLmNvbQ==") , ReviceMail, msg.as_string())
 
 
 def returnRGB(value):

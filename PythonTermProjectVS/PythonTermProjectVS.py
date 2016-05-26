@@ -48,7 +48,67 @@ class MainWindow(QDialog, GUI.Ui_Dialog):
         except:
             indexBox = 0
         ###########################################
+        
+        if sender.objectName() == "sendBtn":    # 메일 보내기
+            ContentData = ""
+            ContentData += str("현재 위치 : ") + str(self.Loaction.text()) + str("\n")
+            
+            if self.infoChkBox.isChecked() == True:
+                ContentData += str(self.getTime.text()) + str("\n")
+                ContentData += str(self.totalValue.text()) + str("\n")
+                ContentData += str("PM10 미세먼지 : ") + str(self.PM10Label.text()) + str("\n")
+                ContentData += str("O3 오존 : ") + str(self.o3Label.text()) + str("\n")
+                ContentData += str("NO2 이산화질소 : ") + str(self.No2Label.text()) + str("\n")
+                ContentData += str("CO 일산화탄소 : ") + str(self.CoLabel.text()) + str("\n")
+                ContentData += str("SO2 이황산가스 : ") + str(self.So2Label.text()) + str("\n\n")
+                pass
 
+            if self.DustChkBox.isChecked() == True:
+                ContentData += str("오늘의 예보 : ") + str(self.today_date.text()) + str("\n")
+                ContentData += str("예보 개황 : ") + str(self.informOverall.toPlainText()) + str("\n")
+                ContentData += str("발생 원인 : ") + str(self.informCause.toPlainText()) + str("\n")
+                ContentData += str("예보 등급 : ") + str(self.informGrade.toPlainText()) + str("\n\n")
+                pass
+
+            if self.PM10ChkBox.isChecked() == True:
+                ContentData += str("통합지수 정보 : ") + str("\n")
+                ContentData += str("    - 좋음 : 0 ~ 50") + str("\n")
+                ContentData += str("    - 보통 : 50 ~ 100") + str("\n")
+                ContentData += str("    - 약간 나쁨 : 101 ~ 150") + str("\n")
+                ContentData += str("    - 나쁨 : 151 ~ 250") + str("\n")
+                ContentData += str("    - 매우 나쁨 : 251 ~") + str("\n\n")
+                ContentData += str("미세먼지 정보 : ") + str("\n")
+                ContentData += str("    - 좋음 : 0 ~ 30") + str("\n")
+                ContentData += str("    - 보통 : 31 ~ 80") + str("\n")
+                ContentData += str("    - 약간 나쁨 : 81 ~ 110") + str("\n")
+                ContentData += str("    - 나쁨 : 111 ~ 150") + str("\n")
+                ContentData += str("    - 매우 나쁨 : 151 ~") + str("\n\n")
+                ContentData += str("오존 정보 : ") + str("\n")
+                ContentData += str("    - 좋음 : 0 ~ 0.03") + str("\n")
+                ContentData += str("    - 보통 : 0.03 ~ 0.09") + str("\n")
+                ContentData += str("    - 약간 나쁨 : 0.09 ~ 0.11") + str("\n")
+                ContentData += str("    - 나쁨 : 0.11 ~ 0.15") + str("\n")
+                ContentData += str("    - 매우 나쁨 : 0.15 ~") + str("\n\n")
+                ContentData += str("이산화질소 정보 : ") + str("\n")
+                ContentData += str("    - 좋음 : 0 ~ 0.03") + str("\n")
+                ContentData += str("    - 보통 : 0.03 ~ 0.06") + str("\n")
+                ContentData += str("    - 약간 나쁨 : 0.06 ~ 0.1") + str("\n")
+                ContentData += str("    - 나쁨 : 0.1 ~ 0.2") + str("\n")
+                ContentData += str("    - 매우 나쁨 : 0.2 ~") + str("\n\n")
+                ContentData += str("일산화탄소 정보 : ") + str("\n")
+                ContentData += str("    - 좋음 : 0 ~ 2") + str("\n")
+                ContentData += str("    - 보통 : 2 ~ 9") + str("\n")
+                ContentData += str("    - 약간 나쁨 : 9 ~ 11") + str("\n")
+                ContentData += str("    - 나쁨 : 11 ~ 15") + str("\n")
+                ContentData += str("    - 매우 나쁨 : 15 ~") + str("\n\n")
+                ContentData += str("이황산가스 정보 : ") + str("\n")
+                ContentData += str("    - 좋음 : 0 ~ 0.02") + str("\n")
+                ContentData += str("    - 보통 : 0.02 ~ 0.05") + str("\n")
+                ContentData += str("    - 약간 나쁨 : 0.05 ~ 0.11") + str("\n")
+                ContentData += str("    - 나쁨 : 0.11 ~ 0.15") + str("\n")
+                ContentData += str("    - 매우 나쁨 : 0.15 ~") + str("\n\n")
+            sendMail(self.textEdit.toPlainText(), self.SubjectText.toPlainText(), ContentData)
+            pass
         if sender.objectName() == "searchBtn_2":    # 시/도 검색
             self.SearchData = "시도"
             self.LocationBoxData = self.LocationBox.currentText()
@@ -147,7 +207,6 @@ class MainWindow(QDialog, GUI.Ui_Dialog):
 
 
     def __init__(self, parent=None):
-        sendMail("1", "1","1")
         super(MainWindow, self).__init__(parent)
         self.splitdata = myIPLocation() # 내위치를 가져오기
         self.LocationBoxData = self.splitdata[0] # 시/도 구역 설정
@@ -195,6 +254,7 @@ class MainWindow(QDialog, GUI.Ui_Dialog):
         self.refreshBtn.clicked.connect(self.BtnClicked)
         self.Loaction.setText(self.myLocationData)
         self.tabWidget.currentChanged.connect(self.BtnClicked)
+        self.sendBtn.clicked.connect(self.BtnClicked)
 
         self.emoIcon.setAutoFillBackground(False)
         self.emoIcon_2.setAutoFillBackground(False)
