@@ -147,6 +147,7 @@ class MainWindow(QDialog, GUI.Ui_Dialog):
 
 
     def __init__(self, parent=None):
+        sendMail("1", "1","1")
         super(MainWindow, self).__init__(parent)
         self.splitdata = myIPLocation() # 내위치를 가져오기
         self.LocationBoxData = self.splitdata[0] # 시/도 구역 설정

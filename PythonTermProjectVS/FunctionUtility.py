@@ -1,8 +1,37 @@
 import urllib.request
 import string
 import codecs
+import smtplib
+import base64
 from xml.dom.minidom import *
 from PyQt5.QtGui import *
+from email.mime.base import MIMEBase
+from email.mime.text import MIMEText
+
+def Base64_Encode(s):
+    return base64.b64encode(s.encode('utf-8'))
+
+def Base64_Decode(b):
+    return base64.b64decode(b).decode('utf-8')
+
+
+def sendMail(ReviceMail, Subject, Content):
+    s = smtplib.SMTP("smtp.gmail.com",587) #SMTP 서버 설정
+    #s.ehlo()
+    s.starttls() #STARTTLS 시작
+    #s.ehlo()
+    s.login( Base64_Decode("YW5reW9uZzk5QGdtYWlsLmNvbQ=="),Base64_Decode("YW5reW9uZzk="))
+    
+    contents = '프로그램 뻗었다!!'
+
+    msg = MIMEText(contents, _charset='euc-kr')
+    msg['Subject'] = '[ALERT]'
+    msg['From'] = "ankyong99@gmail.com"
+    msg['To'] = "kwon616@gmail.com"
+
+    s.sendmail("ankyong99@gmail.com" , "kwon616@gmail.com", msg.as_string())
+    pass
+
 
 def returnRGB(value):
     # 상태에 따라서 RGB 색상을 리스트 형식으로 다르게 리턴 한다.
