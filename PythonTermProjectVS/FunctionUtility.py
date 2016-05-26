@@ -14,6 +14,9 @@ def Base64_Encode(s):
 def Base64_Decode(b):
     return base64.b64decode(b).decode('utf-8')
 
+def download_image(url, filename):
+    full_name =  str(filename) + ".png"
+    urllib.request.urlretrieve(url, full_name)
 
 def sendMail(ReviceMail, Subject, Content):
     s = smtplib.SMTP("smtp.gmail.com",587) #SMTP 서버 설정
@@ -147,7 +150,10 @@ def addParsingDataString(xmlData, motherData, childData):
     signguCdSize = len(siGunGuList)
     for index in range(signguCdSize):
         mphms = siGunGuList[index].getElementsByTagName(childData)
-        return str(mphms[0].firstChild.data)
+        if childData == "imageUrl1":
+            return str(mphms[1].firstChild.data)
+        else:
+            return str(mphms[0].firstChild.data)
 
 def compareListAdd(ListA, ListB, AddList, Word):
         temp = ""

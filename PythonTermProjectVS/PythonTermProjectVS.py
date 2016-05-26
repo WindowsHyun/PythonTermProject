@@ -49,7 +49,7 @@ class MainWindow(QDialog, GUI.Ui_Dialog):
             indexBox = 0
         ###########################################
         
-        if sender.objectName() == "sendBtn":    # 메일 보내기
+        if sender.objectName() == "sendBtn":    # 메일 보내기\
             ContentData = ""
             ContentData += str("현재 위치 : ") + str(self.Loaction.text()) + str("\n")
             
@@ -107,8 +107,14 @@ class MainWindow(QDialog, GUI.Ui_Dialog):
                 ContentData += str("    - 약간 나쁨 : 0.05 ~ 0.11") + str("\n")
                 ContentData += str("    - 나쁨 : 0.11 ~ 0.15") + str("\n")
                 ContentData += str("    - 매우 나쁨 : 0.15 ~") + str("\n\n")
-            sendMail(self.textEdit.toPlainText(), self.SubjectText.toPlainText(), ContentData)
+
+            if self.textEdit.toPlainText() == "":
+                QMessageBox.information(self, "미세먼지 주의보" , "수신할 이메일 주소를 적어주세요..!",QMessageBox.Yes)
+            else:
+                sendMail(self.textEdit.toPlainText(), self.SubjectText.toPlainText(), ContentData)
+                QMessageBox.information(self, "미세먼지 주의보" , "메일 발송을 완료 하였습니다..!",QMessageBox.Yes)
             pass
+
         if sender.objectName() == "searchBtn_2":    # 시/도 검색
             self.SearchData = "시도"
             self.LocationBoxData = self.LocationBox.currentText()
@@ -181,8 +187,6 @@ class MainWindow(QDialog, GUI.Ui_Dialog):
             writeImageWidget(self.emoIcon_5,"/Img/emoticon/resize/", self.coValueData, "png") # CO
             writeImageWidget(self.emoIcon_6,"/Img/emoticon/resize/", self.so2ValueData, "png") # SO2
 
-           
-
             if sender.objectName() == "refreshBtn":
                 QMessageBox.information(self, "미세먼지 주의보" , "갱신을 완료하였습니다..!",QMessageBox.Yes)
 
@@ -197,13 +201,20 @@ class MainWindow(QDialog, GUI.Ui_Dialog):
             serverurl = "http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getMinuDustFrcstDspth?ServiceKey="
             servervalue = "&searchDate=" + urlencode(nowdate) + ""
             areaData = openAPItoXML(serverurl, self.serverKey, servervalue)
-            
-            writeLabelWidget(self.today_date, "%s" % addParsingDataString(areaData, "item", "dataTime"))
-            self.informOverall.setPlainText("%s" % addParsingDataString(areaData, "item", "informOverall"))
-            self.informCause.setPlainText("%s" % addParsingDataString(areaData, "item", "informCause"))
-            self.informGrade.setPlainText("%s" % str(addParsingDataString(areaData, "item", "informGrade")).replace(",", ", "))
-            if sender.objectName() == "refreshBtn_2":
-                QMessageBox.information(self, "미세먼지 주의보" , "갱신을 완료하였습니다..!",QMessageBox.Yes)
+
+            totalCount = addParsingDataString(areaData, "body", "totalCount")
+            if int(totalCount) != 0: #예보가 있을경우에만 표시한다.
+                download_image(str(addParsingDataString(areaData, "items", "imageUrl1")), "pm10") # pm10 이미지 다운로드
+                writeImageWidget(self.pm10_img,"/", "pm10", "png")
+
+                writeLabelWidget(self.today_date, "%s" % addParsingDataString(areaData, "item", "dataTime"))
+                self.informOverall.setPlainText("%s" % addParsingDataString(areaData, "item", "informOverall"))
+                self.informCause.setPlainText("%s" % addParsingDataString(areaData, "item", "informCause"))
+                self.informGrade.setPlainText("%s" % str(addParsingDataString(areaData, "item", "informGrade")).replace(",", ", "))
+                if sender.objectName() == "refreshBtn_2":
+                    QMessageBox.information(self, "미세먼지 주의보" , "갱신을 완료하였습니다..!",QMessageBox.Yes)
+            else:
+                QMessageBox.information(self, "미세먼지 주의보" , "현재 예보가 없습니다..!",QMessageBox.Yes)
 
 
     def __init__(self, parent=None):
@@ -224,7 +235,6 @@ class MainWindow(QDialog, GUI.Ui_Dialog):
         self.SearchData = "지역"
         self.serverKey = "agRTEvpQv1bNvtoPQr3DNvE5juZ9EAws47JkmLbQnf4OYYAXw%2FAh9TULJtGxrEBzqH2767koxGlukyRTjweQcg%3D%3D"
         self.setupUi(self)
-        writeImageWidget(self.pm10_img,"/Img/", "pm10_Test", "png") # pm10 관련 이미지 추가
         self.pm10_img.setScaledContents(True);
         writeImageWidget(self.dustState,"/Img/", "state_img3", "png") # pm10 관련 이미지 추가
         
