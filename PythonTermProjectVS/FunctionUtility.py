@@ -100,6 +100,13 @@ def urldecode(string):
     # URL 디코딩
     return urllib.parse.quote(string)
 
+def stringSplit(data, first, last):
+    p1 = data.find(first) + len(first)# 현재 위치를 나타내 주는 글자의 위치를 구한다.  
+    newData = data[p1:p1 + 100] # 해당 글자 위치에서 50글자를 data에 넣는다.
+    p2 = newData.find(last)
+    return newData[:p2].split()
+
+
 def myIPLocation():
     opener = urllib.request.build_opener()
     opener.addheaders = [('User-agent', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36')]

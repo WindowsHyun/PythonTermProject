@@ -2,7 +2,6 @@
 import sys
 import urllib
 import time
-
 import GUI
 from FunctionUtility import *
 from PyQt5 import QtCore
@@ -154,8 +153,32 @@ class MainWindow(QDialog, GUI.Ui_Dialog):
 
 
         if sender.objectName() == "refreshBtn" or int(indexBox) == int("1"):    # 오염정보 검색
+            #------------------------------------------------------------------------------------------------------------------------
+            serverurl = "https://apis.daum.net/local/geo/addr2coord?apikey="
+            locationData = "" + self.LocationBoxData + " " + self.LocationListData + " " + self.DetailListData + ""
+            servervalue = "&q=" + urlencode(locationData) + "&output=xml"
+            areaData = openAPItoXML(serverurl, "d8807fd4a736291f4878c3cd37d8612d", servervalue)
+            wgs84_x = addParsingDataString(areaData, "item", "point_x")
+            wgs84_y = addParsingDataString(areaData, "item", "point_y")
+            # ↑ 현재 지정된 주소를 wgs84 X, Y  좌표를 받아온다.
+            
+            serverurl = "https://apis.daum.net/local/geo/transcoord?apikey="
+            servervalue = "&fromCoord=WGS84&y=" + wgs84_y + "&x=" + wgs84_x + "&toCoord=TM&output=xml"
+            areaData = openAPItoXML(serverurl, "d8807fd4a736291f4878c3cd37d8612d", servervalue)
+            tm_x =  stringSplit(areaData, "x='" , "'")
+            tm_y = stringSplit(areaData, "y='" , "'")
+            # ↑ 받아온 X, Y 좌표를 TM 좌표로 변환한다.
+
+            serverurl = "http://openapi.airkorea.or.kr/openapi/services/rest/MsrstnInfoInqireSvc/getNearbyMsrstnList?ServiceKey="
+            servervalue = "&tmX=" + tm_x[0] + "&tmY=" + tm_y[0] + "&numOfRows=999&pageSize=999&pageNo=1&startPage=1"
+            areaData = openAPItoXML(serverurl, self.serverKey, servervalue)
+            realLocationData = addParsingDataString(areaData, "item", "stationName") # 실제 측정소 위치
+            writeLabelWidget(self.realLocation, "실제 측정소 : %s" % realLocationData)
+            # ↑ 변환된 좌표로 해당 TM 위치에서 가장 가까운 측정소를 가져와 설정을 한다.
+            #------------------------------------------------------------------------------------------------------------------------
+
             serverurl = "http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getMsrstnAcctoRltmMesureDnsty?ServiceKey="
-            servervalue = "&stationName=" + urlencode(self.DetailListData) + "&dataTerm=month&pageNo=1&numOfRows=10&ver=1.2&"
+            servervalue = "&stationName=" + urlencode(realLocationData) + "&dataTerm=month&pageNo=1&numOfRows=10&ver=1.2&"
             areaData = openAPItoXML(serverurl, self.serverKey, servervalue)
 
             self.khaiValue = addParsingDataString(areaData, "item", "khaiValue") # 통합 지수
