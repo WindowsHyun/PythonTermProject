@@ -50,7 +50,7 @@
     </size>
    </property>
    <property name="currentIndex">
-    <number>3</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -1165,7 +1165,7 @@
    </widget>
    <widget class="QWidget" name="tab_2">
     <attribute name="title">
-     <string>미세먼지 정보</string>
+     <string>농도 정보</string>
     </attribute>
     <widget class="QLabel" name="PM10_Info">
      <property name="geometry">
@@ -1186,7 +1186,7 @@
    </widget>
    <widget class="QWidget" name="tab_5">
     <attribute name="title">
-     <string>Mail</string>
+     <string>Mail＆Save</string>
     </attribute>
     <widget class="QLabel" name="label_11">
      <property name="geometry">
@@ -1384,6 +1384,19 @@ p, li { white-space: pre-wrap; }
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="saveBtn_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>540</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>저장하기</string>
      </property>
     </widget>
    </widget>

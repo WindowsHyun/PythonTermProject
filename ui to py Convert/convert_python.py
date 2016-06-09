@@ -511,10 +511,13 @@ class Ui_Dialog(object):
         self.label_12.setFont(font)
         self.label_12.setAlignment(QtCore.Qt.AlignCenter)
         self.label_12.setObjectName("label_12")
+        self.saveBtn_2 = QtWidgets.QPushButton(self.tab_5)
+        self.saveBtn_2.setGeometry(QtCore.QRect(10, 540, 91, 31))
+        self.saveBtn_2.setObjectName("saveBtn_2")
         self.tabWidget.addTab(self.tab_5, "")
 
         self.retranslateUi(Dialog)
-        self.tabWidget.setCurrentIndex(3)
+        self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):
@@ -560,7 +563,7 @@ class Ui_Dialog(object):
         self.refreshBtn_2.setText(_translate("Dialog", "갱신"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3), _translate("Dialog", "PM10 정보"))
         self.PM10_Info.setText(_translate("Dialog", "TextLabel"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("Dialog", "미세먼지 정보"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("Dialog", "농도 정보"))
         self.label_11.setText(_translate("Dialog", "받는 사람 :"))
         self.label_14.setText(_translate("Dialog", "제목 : "))
         self.SubjectText.setHtml(_translate("Dialog", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
@@ -573,5 +576,6 @@ class Ui_Dialog(object):
         self.DustChkBox.setText(_translate("Dialog", " 미 세 먼 지 정 보"))
         self.PM10ChkBox.setText(_translate("Dialog", " P M 10 정 보"))
         self.label_12.setText(_translate("Dialog", "원하는 정보 항목"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_5), _translate("Dialog", "Mail"))
+        self.saveBtn_2.setText(_translate("Dialog", "저장하기"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_5), _translate("Dialog", "Mail＆Save"))
 

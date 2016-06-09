@@ -3,6 +3,7 @@ import sys
 import urllib
 import time
 import GUI
+import txtOut # C/C++ 연동 pyd 파일
 from FunctionUtility import *
 from PyQt5 import QtCore
 from PyQt5.QtCore import Qt
@@ -48,7 +49,7 @@ class MainWindow(QDialog, GUI.Ui_Dialog):
             indexBox = 0
         ###########################################
         
-        if sender.objectName() == "sendBtn":    # 메일 보내기\
+        if sender.objectName() == "sendBtn" or sender.objectName() == "saveBtn_2" :    # 메일 보내기 & 저장하기
             ContentData = ""
             ContentData += str("현재 위치 : ") + str(self.Loaction.text()) + str("\n")
             
@@ -110,8 +111,13 @@ class MainWindow(QDialog, GUI.Ui_Dialog):
             if self.textEdit.toPlainText() == "":
                 QMessageBox.information(self, "미세먼지 주의보" , "수신할 이메일 주소를 적어주세요..!",QMessageBox.Yes)
             else:
-                sendMail(self.textEdit.toPlainText(), self.SubjectText.toPlainText(), ContentData)
-                QMessageBox.information(self, "미세먼지 주의보" , "메일 발송을 완료 하였습니다..!",QMessageBox.Yes)
+                if sender.objectName() == "sendBtn" :
+                    sendMail(self.textEdit.toPlainText(), self.SubjectText.toPlainText(), ContentData)
+                    QMessageBox.information(self, "미세먼지 주의보" , "메일 발송을 완료 하였습니다..!",QMessageBox.Yes)
+                else:
+                    txtOut.txtOut(ContentData)
+                    QMessageBox.information(self, "미세먼지 주의보" , "파일 저장을 완료하였습니다..!",QMessageBox.Yes)
+                    pass
             pass
 
         if sender.objectName() == "searchBtn_2":    # 시/도 검색
@@ -276,6 +282,7 @@ class MainWindow(QDialog, GUI.Ui_Dialog):
         self.searchBtn.clicked.connect(self.BtnClicked)
         self.searchBtn_2.clicked.connect(self.BtnClicked)
         self.saveBtn.clicked.connect(self.BtnClicked)
+        self.saveBtn_2.clicked.connect(self.BtnClicked)
         self.refreshBtn_2.clicked.connect(self.BtnClicked)
         self.refreshBtn.clicked.connect(self.BtnClicked)
         self.Loaction.setText(self.myLocationData)
