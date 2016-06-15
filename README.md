@@ -1,9 +1,9 @@
 # PythonTermProject [미세먼지 주의보]
 
 각 지역별 오염 정보를 확인하여 검색된 위치에 "좋음~매우나쁨"까지 확인할수 있다.
-![Image01](https://github.com/WindowsHyun/PythonTermProject/blob/master/Image/newexUI.png?raw=true)
-![Image02](https://github.com/WindowsHyun/PythonTermProject/blob/master/Image/newexUI2.png?raw=true)
-![Image03](https://github.com/WindowsHyun/PythonTermProject/blob/master/Image/newexUI3.png?raw=true)
+![Image01](https://github.com/WindowsHyun/PythonTermProject/blob/master/Image/newex_UI.png?raw=true)
+![Image02](https://github.com/WindowsHyun/PythonTermProject/blob/master/Image/newex_UI2.png?raw=true)
+![Image03](https://github.com/WindowsHyun/PythonTermProject/blob/master/Image/newex_UI3.png?raw=true)
 
 ----------
 개발자
@@ -36,17 +36,19 @@
  4. IP 위치를 기반으로한 자신의 위치 확인
  5. IP 위치를 기반 현재 위치에서 가장 가까운 측정소 찾기
  6. C/C++ 함수 혹은 라이브러리 연동
+ 7. distutils 모듈을 활용한 개발 패키지 배포
 
 ---------
 구현 예정 내용
 ---------
- 1. distutils 모듈을 활용한 개발 패키지 배포
+ 1. -
 
 ---------
 Youtube 업로드 영상 & PPT 자료
 ---------
 + [1차 발표 PPT](https://github.com/WindowsHyun/PythonTermProject/blob/master/Documnet/%5B1%EC%B0%A8%5D%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%20%EC%96%B8%EC%96%B4%20%ED%85%80%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B8%B0%ED%9A%8D.pptx?raw=true) / [1차 발표 영상](https://www.youtube.com/watch?v=pi8r_2Kas5w)
 + [2차 발표 PPT](https://github.com/WindowsHyun/PythonTermProject/blob/master/Documnet/%5B2%EC%B0%A8%5D%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%20%EC%96%B8%EC%96%B4%20%ED%85%80%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B8%B0%ED%9A%8D.pptx?raw=true) / [2차 발표 영상](https://www.youtube.com/watch?v=mdKP4wjipv4&feature=youtu.be)
++ [최종 발표 PPT](https://github.com/WindowsHyun/PythonTermProject/blob/master/Documnet/%5B%EC%B5%9C%EC%A2%85%5D%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%20%EC%96%B8%EC%96%B4%20%ED%85%80%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B8%B0%ED%9A%8D.pptx?raw=true) / [최종 발표 영상](https://www.youtube.com/watch?v=FBcoujWzhKo)
 
 
 
